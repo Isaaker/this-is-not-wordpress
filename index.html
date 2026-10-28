@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="theme-color" content="#070a08">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; font-src 'none'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Wrong house, bot. No WordPress here.</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #070a08;
+      --panel: #0b100c;
+      --panel-2: #101711;
+      --green: #9dff7a;
+      --green-dim: #5e9a51;
+      --text: #e1eadf;
+      --muted: #8a9a88;
+      --line: #273629;
+      --red: #c86d65;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+    * { box-sizing: border-box; }
+    html { min-height: 100%; background: var(--bg); }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: clamp(16px, 4vw, 42px);
+      color: var(--text);
+      font-family: var(--mono);
+      background:
+        linear-gradient(rgba(157,255,122,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(157,255,122,.025) 1px, transparent 1px),
+        radial-gradient(ellipse at 50% -15%, rgba(65,110,58,.18), transparent 55%),
+        var(--bg);
+      background-size: 28px 28px, 28px 28px, auto, auto;
+      display: grid;
+      place-items: center;
+    }
+    a { color: var(--green); }
+    code { color: var(--green); overflow-wrap: anywhere; }
+    .page { width: min(100%, 1020px); }
+    .topbar, .bottombar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: .72rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .brand { color: var(--green); }
+    .status { border: 1px solid var(--line); padding: 7px 10px; background: #090d09; }
+    .status::before { content: "● "; color: var(--green); }
+    main {
+      margin: 18px 0 14px;
+      overflow: hidden;
+      border: 1px solid var(--green-dim);
+      background: rgba(8, 12, 9, .96);
+      box-shadow: 0 0 0 1px rgba(157,255,122,.045), 0 18px 70px rgba(0,0,0,.45), 0 0 35px rgba(77,133,60,.07);
+    }
+    .terminal-bar {
+      min-height: 43px;
+      padding: 11px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--line);
+      background: var(--panel-2);
+      color: var(--muted);
+      font-size: .73rem;
+    }
+    .terminal-title { color: var(--text); }
+    .terminal-title::before { content: "[ "; color: var(--green-dim); }
+    .terminal-title::after { content: " ]"; color: var(--green-dim); }
+    .hero { padding: clamp(24px, 5vw, 54px); }
+    .eyebrow {
+      display: inline-block;
+      margin: 0 0 20px;
+      padding: 7px 10px;
+      border: 1px solid var(--green-dim);
+      background: rgba(157,255,122,.055);
+      color: var(--green);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 17ch;
+      margin: 0;
+      color: var(--green);
+      font-size: clamp(2.25rem, 6.4vw, 5.5rem);
+      font-weight: 900;
+      letter-spacing: -.075em;
+      line-height: .98;
+      text-wrap: balance;
+      text-shadow: 0 0 22px rgba(157,255,122,.10);
+    }
+    .subhead {
+      max-width: 64ch;
+      margin: 22px 0 0;
+      color: var(--text);
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      line-height: 1.65;
+    }
+    .subhead strong { color: var(--green); font-weight: 800; }
+    .terminal {
+      margin: 30px 0 0;
+      padding: clamp(16px, 3vw, 25px);
+      border: 1px solid var(--line);
+      background: #050705;
+      font-size: clamp(.78rem, 1.45vw, .95rem);
+      line-height: 1.8;
+      overflow-wrap: anywhere;
+    }
+    .line { display: block; }
+    .prompt { color: var(--green); }
+    .output { display: block; padding-left: 1.6em; color: var(--muted); }
+    .bad { color: #d3aaa4; }
+    .good { color: var(--green); }
+    .cursor {
+      display: inline-block;
+      width: .65em;
+      height: 1.05em;
+      margin-left: .25em;
+      vertical-align: -.15em;
+      background: var(--green);
+      animation: blink 1.1s steps(2, start) infinite;
+    }
+    .manifesto {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .fact {
+      padding: 13px 14px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      min-width: 0;
+    }
+    .fact b {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--green);
+      font-size: .72rem;
+      letter-spacing: .12em;
+    }
+    .fact span { color: var(--muted); font-size: .82rem; line-height: 1.5; }
+    .closing {
+      margin-top: 24px;
+      padding: 18px 20px;
+      border-left: 3px solid var(--green);
+      background: rgba(157,255,122,.045);
+      color: var(--text);
+      font-size: .92rem;
+      line-height: 1.75;
+    }
+    .closing strong { color: var(--green); }
+    .tiny { color: var(--muted); font-size: .74rem; line-height: 1.6; }
+    .bottombar { font-size: .67rem; }
+    @keyframes blink { to { visibility: hidden; } }
+    @media (max-width: 650px) {
+      body { padding: 12px; }
+      .topbar, .bottombar { font-size: .63rem; }
+      .hero { padding: 22px 16px; }
+      .manifesto { grid-template-columns: 1fr; }
+      .terminal-bar { font-size: .65rem; }
+      h1 { max-width: 14ch; }
+      .closing { padding: 15px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <span class="brand">root@not-wordpress:~#</span>
+      <span>automated probe detected // human unimpressed</span>
+    </header>
+
+    <main>
+      <div class="terminal-bar">
+        <span class="terminal-title">incident-report.txt</span>
+        <span>STATUS: NOT YOUR TARGET</span>
+      </div>
+      <section class="hero" aria-labelledby="headline">
+        <p class="eyebrow">// wrong house, little bot</p>
+        <h1 id="headline">BRO. THIS IS A FUCKING STATIC WEBSITE.</h1>
+        <p class="subhead">
+          We're talking <strong>HTML. CSS. A little JavaScript.</strong>
+          That's the whole fucking stack. No WordPress. No PHP. No database.
+          Not even a dusty plugin hiding under the floorboards.
+        </p>
+
+        <div class="terminal" aria-label="A humorous pretend terminal session">
+          <span class="line"><span class="prompt">$</span> ls -la</span>
+          <span class="output">index.html&nbsp;&nbsp; style.css&nbsp;&nbsp; script.js</span>
+          <span class="line"><span class="prompt">$</span> ls wp-*</span>
+          <span class="output bad">ls: cannot access 'wp-*': No such file or directory</span>
+          <span class="line"><span class="prompt">$</span> find . -iname '*wordpress*'</span>
+          <span class="output">0 results. Have you tried touching grass?</span>
+          <span class="line"><span class="prompt">$</span> whoami</span>
+          <span class="output">a human who just wanted to publish a website</span>
+          <span class="line"><span class="prompt">$</span> exit<span class="cursor" aria-hidden="true"></span></span>
+        </div>
+
+        <div class="manifesto" aria-label="What this website is and is not">
+          <div class="fact"><b>[ YES ]</b><span>Plain files. Static hosting. Immaculate lack of complexity.</span></div>
+          <div class="fact"><b>[ NO ]</b><span><code>wp-admin</code>, <code>wp-login</code>, PHP, MySQL, mystery plugins.</span></div>
+          <div class="fact"><b>[ LOL ]</b><span>Your scanner found a CMS-shaped hole in absolutely nothing.</span></div>
+        </div>
+
+        <div class="closing">
+          You're trying to pick the lock on a door that was never installed, mate.<br>
+          <strong>The firewall is already on.</strong><br>
+          I'm just here to tell you to go haunt somebody else's haunted PHP basement.
+        </div>
+        <p class="tiny">No hard feelings, little bot. Okay, some feelings. This page was cheaper than writing a support ticket about your nonsense.</p>
+      </section>
+    </main>
+
+    <footer class="bottombar">
+      <span>END OF TRANSMISSION // STATIC BY CHOICE</span>
+      <span>beep boop · try another hobby</span>
+    </footer>
+  </div>
+</body>
+</html>
